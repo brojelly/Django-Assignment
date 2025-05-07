@@ -113,8 +113,12 @@
 <div class="container" style="margin-top: 15px">
     {% if request.user.is_authenticated %}
     <div style="display: flex; justify-content: space-between">
-        <h1>{{ request.user.username }}'s Todo List</h1>
-        <button class="create-button" onclick="location.href='{% url 'todo_create' %}'">생성하기</button>
+        {% if not request.user.is_staff %}
+            <h1>{{ request.user.username }}'s Todo List</h1>
+        {% else %}
+            <h1>All To Do List (By. Admin)</h1>
+        {% endif %}
+            <button class="create-button" onclick="location.href='{% url 'cbv_todo_create' %}'">생성하기</button>
     </div>
     <form method="GET" style="margin: 10px">
         <input type="text" placeholder="제목 또는 내용을 입력하세요." name="q" value="{% if request.GET.q %}{{ request.GET.q }}{% endif %}">

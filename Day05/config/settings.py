@@ -113,7 +113,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-LOGIN_REDIRECT_URL = '/todo/'
+LOGIN_REDIRECT_URL = '/cbv/todo/'
 
 
 # Static files (CSS, JavaScript, Images)
